@@ -1,0 +1,126 @@
+.form{
+    background: white;
+}
+
+.post_card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    border-radius: 25px;
+    width: 280px;
+    height: 340px;
+}
+
+.post_card h2{
+    margin: 10px 12px;
+    text-align: left;
+    font-size: 24px;
+}
+
+.post_card img{
+    width: 200px;
+    height: 230px;
+    padding-right: 10px; 
+    padding-left: 10px; 
+}
+
+.post_card p{
+    padding-right: 10px; 
+    padding-left: 10px; 
+    font-size: 12px;
+}
+
+
+
+.add_button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+  
+.ml-auto {
+    margin-left: auto !important;
+}
+  
+.add_button a{
+    background: #9CFF63;
+    color: #192058;
+    padding: 10px 16px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+.post_options{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+    font-size: 18px;
+}
+
+
+
+.post_options a:nth-child(1) {
+    background: rgb(223, 55, 55);
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: white;
+    text-decoration: none;
+    margin: 2rem 0 0;
+    font-weight: 500;
+}
+
+.post_options a:nth-child(1):hover {
+    background: red;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.post_options a:nth-child(2) {
+    background: rgb(74, 148, 218);
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: white;
+    text-decoration: none;
+    margin: 2rem 0 0;
+    font-weight: 500;
+}
+
+.post_options a:nth-child(2):hover {
+    background: white;
+    color: rgb(74, 148, 218);
+    transition: all 0.3s ease-in-out;
+}
+
+.post_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.post_flex{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+}
+
+.post_delete form h2{
+    color: rgb(0, 0, 0);
+}
+
+.document_card{
+    background: white;
+}
+
+.options_container {
+    display: flex;
+    gap: 10px; 
+}

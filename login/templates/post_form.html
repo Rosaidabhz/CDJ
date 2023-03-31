@@ -1,0 +1,170 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+
+<!-- Creación de Post -->
+{% if type_form == 1%}
+<form method="POST" enctype="multipart/form-data" class="form_create">
+    {% csrf_token %}
+    {{ form.media }}
+
+    <label>Título</label>
+    <div>{{ form.title}}</div>
+
+    <div>{{ form.image }}</div>
+
+    <label> Subtítulo </label>
+    <div>{{ form.subtitle }}</div>
+
+    <label> Descripción Noticia </label>
+    <div>{{ form.text }}</div>
+
+
+    {% if update == 1 %}
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+
+    {% else %}
+    <button type="submit" class="btn btn-primary">Crear</button>
+    {% endif %}
+</form>
+{% endif %}
+
+<!---->
+
+
+<!-- Creación de Documentos -->
+{% if type_form == 2%}
+
+<form method="POST" enctype="multipart/form-data" class="form_create">
+    {% csrf_token %}
+
+    <label>Nombre del Documento</label>
+    <div>{{form.title}}</div>
+
+    <label>Archivo</label>
+    <div>{{form.pdf}}</div>
+
+    <label>Descripción</label>
+    <div>{{form.description}}</div>
+
+    <button type="submit" class="btn btn-primary">Crear</button>
+</form>
+
+{% endif %}
+
+<!---->
+
+
+<!-- Creación de Banners -->
+{% if type_form == 3%}
+
+{% if message %}
+
+<div  class="only_element_container">
+    <h2 class="message_only_element">{{message}}</h2>
+    <a type="buttom" href="{% url 'login:panel_admin' %} " class="message_back">Regresar</a>
+</div>
+
+
+{% else %}
+<form method="POST" enctype="multipart/form-data" class="form_create">
+    {% csrf_token %}
+
+    <label>Imagen</label>
+    <div>{{ form.image}}</div>
+
+    <button type="submit" class="btn btn-primary">Crear</button>
+</form>
+{% endif %}
+
+{% endif %}
+<!---->
+
+
+<!-- Creación de AboutUs -->
+{% if type_form == 4%}
+
+{% if message %}
+
+<div class="only_element_container">
+    <h2 class="message_only_element">{{message}}</h2>
+    <a type="buttom" href="{% url 'login:panel_admin' %} " class="message_back">Regresar</a>
+</div>
+
+{% else %}
+
+<form method="POST" enctype="multipart/form-data" class="form_create">
+    {% csrf_token %}
+
+    <label>Nombre del Consejo</label>
+    <div>{{form.name}}</div>
+
+    <label>Descripción del Consejo</label>
+    <div>{{form.description}}</div>
+
+    <label>Logo del Consejo</label>
+    <div>{{form.image}}</div>
+
+
+
+    {% if update == 4 %}
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+
+    {% else %}
+    <button type="submit" class="btn btn-primary">Crear</button>
+    {% endif %}
+</form>
+
+{% endif %}
+
+{% endif %}
+<!---->
+
+<!-- Creación de Colaborador -->
+
+{% if type_form == 5%}
+<form method="POST" enctype="multipart/form-data" class="form_create">
+    {% csrf_token %}
+    {{ form.media }}
+
+    <label>Nombre</label>
+    <div>{{form.firstname}}</div>
+
+    <label>Apellido</label>
+    <div>{{form.lastname}}</div>
+
+    <label>Cargo</label>
+    <div>{{form.position}}</div>
+
+    <label>Descripción Colaborador</label>
+    <div>{{form.description}}</div>
+
+    <label>Imagen Perfil</label>
+    <div>{{form.image}}</div>
+
+    <label>Facebook</label>
+    <div>{{form.facebook}}</div>
+
+    <label>Instagram</label>
+    <div>{{form.instagram}}</div>
+
+    <label>Twitter</label>
+    <div>{{form.twitter}}</div>
+
+    {% if update == 5 %}
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+
+    {% else %}
+    <button type="submit" class="btn btn-primary">Crear</button>
+    {% endif %}
+</form>
+{% endif %}
+
+
+
+<!---->
+
+
+
+{% endblock %}

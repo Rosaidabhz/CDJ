@@ -1,0 +1,246 @@
+{% extends 'layout.html'%}
+
+{% load static %}
+{% block content %}
+
+{% comment %} SECCIÓN DE NOTICIAS {% endcomment %}
+<section class="container">
+    <br>
+    <div class="row">
+        <div class="col">
+          <div class="title-wrapper">
+            <h2 class="title-consejos">NOTICIAS</h2>
+            <div class="special-line"> </div>
+          </div>
+        </div>
+        <div class="add_button ml-auto">
+            <a href="{% url 'login:create_post'%}">
+             Agregar
+            <i class='bx bxs-plus-circle'></i>
+          </a>
+        </div>
+    </div>
+
+    <div class="post_flex">
+        {% for post in posts %}
+        <div class="post_container">
+
+            <div class="post_card">
+                <h2> {{ post.title }} </h2>
+                <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                <p> {{ post.subtitle | safe}}</p>
+            </div>
+
+            <div class="post_options">
+                <div class="options_container">
+                    <a href="{% url 'login:delete_post' post.id %}">Eliminar</a>
+                    <a href="{% url 'login:update_post' post.id %}">Editar</a>
+                </div>
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+</section>
+
+{% comment %} SECCIÓN DOCUMENTOS {% endcomment %}
+
+<section class="container">
+    <div class="row">
+        <div class="col">
+          <div class="title-wrapper">
+            <h2 class="title-consejos">DOCUMENTOS</h2>
+            <div class="special-line"> </div>
+          </div>
+        </div>
+        <div class="add_button ml-auto">
+           <a href="{% url 'login:create_document' %}">
+            Agregar
+            <i class='bx bxs-plus-circle'></i>
+          </a>
+        </div>
+    </div>
+
+    <div class="document_flex">
+        {% for document in documents %}
+        <div class="document_container">
+
+            <div class="document_card">
+
+                <h1>{{document.title}}</h1>
+                <h2> {{document.description | safe }}</h2>
+                <p>{{document.date}}</p>
+                <a href="{{ document.pdf.url }}" target="_blank">Ver más</a>
+                {% with document.pdf.name as file_name %}
+                {% with file_name|slice:'-4:' as extension %}
+
+                {% if extension == 'docx' or extension == '.odt' %}
+                <img src="{% static 'images/doc.png' %}" alt="Docx Icon" class="extension_icon">
+                {% elif extension == '.pdf' %}
+                <img src="{% static 'images/pdf.png' %}" alt="PDF icon" class="extension_icon">
+                {% elif extension == 'xlsx' %}
+                <img src="{% static 'images/docex.png' %}" alt="Xlsx Icon" class="extension_icon">
+                {% else %}
+                <img src="{% static 'images/landing.png' %}" alt="Default Icon" class="extension_icon">
+
+                {% endif %}
+                {% endwith %}
+                {% endwith %}
+
+            </div>
+
+            <div class="document_options">
+                <a href="{% url 'login:delete_document' document.id %}">Eliminar</a>
+            </div>
+
+        </div>
+        {% endfor %}
+
+
+    </div>
+
+
+
+</section>
+
+{% comment %} SECCIÓN BANNER {% endcomment %}
+
+<section class="container">
+    <div class="row">
+        <div class="col">
+          <div class="title-wrapper">
+            <h2 class="title-consejos">BANNER</h2>
+            <div class="special-line"> </div>
+          </div>
+        </div>
+        <div class="add_button ml-auto">
+          <a href="{% url 'login:create_banner' %}">
+            Agregar
+            <i class='bx bxs-plus-circle'></i>
+          </a>
+        </div>
+    </div>
+    <br>
+
+    <div class="banner_flex">
+        {% for banner in banners %}
+        <div class="banner_container">
+            <div class="banner_card">
+                <img src="{{ banner.image.url }}" alt="Banner Image">
+            </div>
+            <div class="banner_options">
+                <a href="{% url 'login:delete_banner' banner.id %}"> Eliminar</a>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+
+</section>
+
+{% comment %} INFORMACIÓN DEL CONSEJO {% endcomment %}
+
+<section class="container">
+    <div class="row">
+        <div class="col">
+          <div class="title-wrapper">
+            <h2 class="title-consejos">INFORMACION CONSEJO</h2>
+            <div class="special-line"> </div>
+          </div>
+        </div>
+        <div class="add_button ml-auto">
+          <a href="{% url 'login:create_about' %}">
+
+            Agregar
+            <i class='bx bxs-plus-circle'></i>
+          </a>
+        </div>
+    </div>
+
+    <div class="about_flex">
+        {% for about in aboutus%}
+        <div class="about_card">
+            <div>
+                <h2>{{ about.name}}</h2>
+                <p>{{ about.description}}</p>
+            </div>
+
+            <img src="{{ about.image.url }}" alt=" Consejo Icon">
+        </div>
+
+        <div class="about_options">
+            <a href="{% url 'login:update_about' about.id %}">Actualizar</a>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!--Colaborador -->
+<section class="container">
+    <div class="row">
+        <div class="col">
+          <div class="title-wrapper">
+            <h2 class="title-consejos">COLABORADORES</h2>
+            <div class="special-line"> </div>
+          </div>
+        </div>
+        <div class="add_button ml-auto">
+          <a href="{% url 'login:create_collaborator' %}">
+            Agregar
+            <i class='bx bxs-plus-circle'></i>
+          </a>
+        </div>
+    </div>
+
+    <div class="container_colab collaborators_flex
+    ">
+        {% for collaborator in collaborators %}
+        <div class="card3">
+            <div class="face face1">
+                <div class="content">
+                    <img class=collaborator_image src="{{ collaborator.image.url }}">
+                    <div>
+                        <h3>{{ collaborator.firstname }} {{ collaborator.lastname }}</h3>
+                        <p>{{ collaborator.position }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="face face2">
+                <div>
+                    <div class="collaborator_social">
+                        <p>{{ collaborator.description }}</p>
+                        {% if collaborator.facebook %}
+                        <a href="{{ collaborator.facebook }}"> <img src="{% static 'images/facebook.svg'%}"
+                                alt="Facebook Icon"> </a>
+                        {% endif %}
+                        {% if collaborator.instagram %}
+                        <a href="{{ collaborator.instagram }}"> <img src="{% static 'images/instagram.svg'%}"
+                                alt="Instagram Icon">
+                        </a>
+                        {% endif %}
+                        {% if collaborator.twitter %}
+                        <a href="{{ collaborator.twitter }}"> <img src="{% static 'images/twitter.svg'%}"
+                                alt="Twitter Icon"> </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="collaborator_options">
+                <div class="options_container">
+                <a href="{% url 'login:delete_collaborator' collaborator.id %}"> Eliminar</a>
+                <a href="{% url 'login:update_collaborator' collaborator.id %}"> Actualizar</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<br>
+{% endblock %}

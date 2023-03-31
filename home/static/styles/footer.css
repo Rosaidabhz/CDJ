@@ -1,0 +1,33 @@
+  /* Style foonter */
+
+  .color-created{
+    background-color:#7C7BBC;
+    }
+  .title-footer{
+    color: #E58EE7;
+  }
+  .fab,.fas {
+    color: #E58EE7;
+    margin-right: 10px;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .col-md-4 {
+    margin-bottom: 30px;
+  }
+  footer {
+    margin-top: auto;
+    background-color: #000000;    
+    padding: 50px 0;
+
+  }
+  .footer-years{
+ font-size: 18px;
+ margin-top: 10px;
+ font-weight: 800;
+ color: black;
+  }

@@ -1,0 +1,142 @@
+
+/* Style General */
+
+body {
+  background: #dddddd;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto';
+  font-size: medium;
+  font-weight: 400;
+  font-style: normal;
+  flex-shrink: 0
+
+}
+html{
+  height: 100%;
+  margin: 0;
+}
+* {
+box-sizing: border-box;
+margin: 0%;
+padding: 0px;
+border: 0px;
+}
+
+
+.banner_home{
+  width: 1200px;
+  height: 600px;
+}
+
+.banner_container_home{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+/* Style inicio */
+
+.home{
+  margin-top: 2rem;
+}
+
+
+
+  /* Style title and hr */
+
+  .title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .title-consejos {
+    text-align: left;
+  }
+  
+  .special-line {
+    flex-grow: 1;
+    margin-left: 20px;
+    border: none;
+    border-top: 2px solid fuchsia;
+  }
+  
+  
+  
+  
+  /* Style consejos and all acard */
+
+.title-consejos{
+  font-size: 32px;
+  font-weight: 400;
+  color: #362c63;
+}
+.card-title-text {
+  font-size: 18px !important ;
+  
+
+}
+.card-title-text{
+  font-size: 20px;
+  color: aqua;
+  
+}
+.container-consejos{
+padding: 20px;
+}
+
+.card .card-reveal{
+padding: 10px!important;
+}
+/* Style media */
+
+
+@media only screen and (max-width : 992px) {
+  .banner_home{
+    width: 800px;
+    height: 400px;
+  }
+  
+
+}
+
+@media only screen and (max-width: 768px) {
+.center-mobile {
+  text-align: center;
+}
+.footer-color{
+  height: 100%;
+ 
+}
+.vertical-line {
+    height: 20px;
+}
+
+.banner_home{
+  width: 650px;
+  height: 375px;
+}
+
+}  
+
+@media (max-width: 576px) {
+  .title-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .special-line {
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .banner_home{
+    width: 400px;
+    height: 200px;
+  }
+}

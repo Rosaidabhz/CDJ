@@ -1,0 +1,78 @@
+{% load static %}
+
+ <!-- Barra de navegacion  -->
+<div class="navbar-fixed">
+  <nav class="navbar-mi-color" role="navigation">
+    <div class="container">
+      <a id="logo-container" href="/" class="brand-logo">
+        <img class="logo" src="{% static 'images/logo.png' %}">
+      </a>
+      <a style="text-decoration: none;" href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <a style="text-decoration: none;"  href="#" data-target="search-demo" class="sidenav-trigger right"><i class="material-icons">search</i></a><ul class="right hide-on-med-and-down" style="padding-top: 10px;">
+        <li><a class="link nav-link white-text" href="/">Inicio</a></li>
+        <li>
+          <a class="link nav-link white-text dropdown-trigger dropdown-below" href="#" data-target="dropdown1">Consejos Locales</a>
+          <ul id="dropdown1" class="nav-link dropdown-content aligned"  style="width:200px">
+            {% for consejo in consejos %}
+            {% if consejo.type_consejo == 'Local' %}
+              <li>
+                <a  class="white-text" href="#" style="color: white; text-decoration: none;">{{ consejo.name }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}          
+          </ul>
+        </li>   
+          {% if user.is_authenticated %}
+          <li><a class="link nav-link white-text" href="{% url 'login:panel_admin' %}">Panel</a></li>
+          <li><a class="link nav-link white-text" href="{% url 'login:logout' %}">Cerrar sesión</a></li>
+          {% else %}
+          <li><a class="link nav-link white-text" href="{% url 'login:signin' %}">Iniciar sesión</a></li>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<!-- Search barra de navegacion  -->
+<ul id="search-demo" class="sidenav sidenav-close left" >
+  <br>
+  <a style="text-decoration: none; max-width: 100%;" class="white-text title-sidevar">Consejos Locales:</a>
+  {% for consejo in consejos %}
+    {% if consejo.type_consejo == 'Local' %}
+    <div class="nav-text">
+    <li><a class="white-text nav-link-sidevar" href="#">{{ consejo.name }}</a></li>
+    {% endif %}
+  </div>
+  {% endfor %}
+</ul>
+
+<!-- Sidenav Mobile  -->
+<ul id="mobile-demo" class="sidenav sidenav-close left">
+  <br>
+  <li>
+    <div class="nav-text">
+      <a class="white-text nav-link" style="text-decoration: none;" href="/">Inicio</a>
+    </div>
+  </li>
+  {% if user.is_authenticated %}
+  <li>
+    <div class="nav-text">
+      <a class="white-text nav-link" style="text-decoration: none;" href="{% url 'login:panel_admin' %}">Panel</a>
+    </div>
+  </li>
+  <li>
+    <div class="nav-text">
+      <a class="white-text nav-link" style="text-decoration: none;" href="{% url 'login:logout' %}">Cerrar Sesión</a>
+    </div>
+  </li>
+  {% else %}
+  <li>
+    <div class="nav-text">
+      <a class="white-text nav-link" style="text-decoration: none;" href="{% url 'login:signin' %}">Iniciar Sesión</a>
+    </div>
+  </li>
+  {% endif %}
+</ul>
+
+
